@@ -201,6 +201,14 @@ Generate two deliverables: a markdown strategy report and an xlsx spreadsheet. *
 
 ## Executive Summary
 
+Start with 2–3 sentences that summarize the strategy in plain language — the key insight, what the plan addresses, and what to do first. Follow with a short bulleted breakdown of the plan (how many P1 vs P2 items, what types of actions). Then list the key stats.
+
+Example opening:
+
+> Bankrate's 401k contributions page is the highest-leverage single optimization in this plan — it covers 13 clusters but ranks 23 for the core one. One strong update lifts the whole hub. The plan includes 20 P1 items (10 optimizations + 10 creates) and 30 P2 items, scheduled across 10 weeks at 5/week.
+
+Then the stats:
+
 - **Domain**: {domain}
 - **Domain strength**: PR {X}, ranked #{Y} among {Z} competitors
 - **Top competitors**: {list top 5 with PR and cluster visibility}
@@ -210,13 +218,15 @@ Generate two deliverables: a markdown strategy report and an xlsx spreadsheet. *
 - **Content pieces recommended**: {count}
 - **Estimated timeline**: {weeks} weeks at {capacity}/week
 
+End with 2–3 "pay attention to" callouts — the most time-sensitive or high-impact items in the plan.
+
 ## Content Plan
 
-| # | Topic | Action | Format | Priority | Best URL | Avg Pos | Vol | Avg PR | Reasoning |
-|---|-------|--------|--------|----------|----------|---------|-----|--------|-----------|
-| 1 | ... | Create | Article + Video | P1 | /questions/old-page/ | — | 6,118 | 42 | No dedicated page — current ranking URL is a Q&A stub, wrong format. PR accessible. Video at 59%. |
-| 2 | ... | Optimize | Article | P1 | /blog/page/ | 14 | 1,239 | 53 | Relevant page, needs improvement. Also covers clusters X and Y — one optimization lifts all three. |
-| 3 | ... | Create | Article + Video | P1 | (none) | — | 1,738 | 55 | Core product topic, no existing page at all. |
+| # | Topic | Action | Format | Priority | Intent | Best URL | Avg Pos | Vol | Competition | Reasoning |
+|---|-------|--------|--------|----------|--------|----------|---------|-----|-------------|-----------|
+| 1 | ... | Create | Article + Video | P1 | informational | /questions/old-page/ | — | 6,118 | Low (42) | Current ranking URL is a Q&A stub, wrong format. Low competition, video at 59%. |
+| 2 | ... | Optimize | Article | P1 | commercial | /blog/page/ | 14 | 1,239 | High (53) | Relevant page, needs improvement. Also covers clusters X and Y — one optimization lifts all three. |
+| 3 | ... | Create | Article + Video | P1 | informational | (none) | — | 1,738 | Moderate (45) | Core product topic, no existing page at all. |
 
 > **Next step for each topic**: open the cluster in thruuu, analyze the competing content, and create a content brief.
 
@@ -243,12 +253,11 @@ These clusters are worth monitoring in thruuu's AIO Monitoring tool to check whe
 
 ## Pages Ranking for Multiple Topics
 
-These pages currently rank for several different clusters. Some are a good fit for that page; others would likely perform better with their own dedicated content. Use thruuu's cluster view to see all the topics each page ranks for.
+Some pages rank for many different clusters at once. The "Already ranking well" column lists clusters where the page is a good fit and performing. The "Needs dedicated content" column lists clusters that would perform better with their own page — consider creating a new article for these.
 
-| Page | # Clusters | Good fit for | Consider own content for |
-|------|-----------|-------------|--------------------------|
-| /blog/serp-tracking-tools/ | 11 | SERP tracking tools | Monitor SERP competitors, AI competitor tracking |
-| /learn/track-brand-mentions/ | 13 | Tracking brand mentions in AI | Benchmark visibility, compare mentions |
+| Page | # Clusters | Already ranking well | Needs dedicated content |
+|------|-----------|---------------------|------------------------|
+| /retirement/401k-contributions/ | 13 | 401k contribution limits, employer match rules | New 401k rules 2026, catch-up contribution changes |
 
 ## Skipped Clusters
 
@@ -266,15 +275,34 @@ Brief notes on the most important strategic decisions:
 - ...
 ```
 
+**Rules for the Executive Summary:**
+
+1. **Start with the strategy, not the stats.** The first thing the user reads should be the key insight — what matters most, what to do first. Stats come after.
+2. **Include a plan breakdown.** How many P1 vs P2 items, how many creates vs optimizes. This gives the user a sense of scale before they read the table.
+3. **End with "pay attention to" callouts.** 2–3 time-sensitive or high-impact items that deserve immediate action. These are the things Claude would say if it only had 30 seconds with the user.
+
 **Rules for the Content Plan table:**
 
-1. **Always show the actual Best URL from the export data.** Even if the URL is a mismatch and the action is "Create," show the URL that currently ranks. The user needs to see what exists. The Action column (Create vs Optimize) already tells them whether the URL is usable. Never replace a real URL with "(none)" — only show "(none)" when the export truly has no Best URL for that cluster.
-2. **Handle duplicate URLs across plan items.** When the same URL appears as Best URL for multiple clusters in the plan, don't list them as separate optimization tasks. Instead, group them: list the primary cluster as the main item, and note in the reasoning that optimizing this page also covers clusters X, Y, Z. The user should see one action per page, not three separate items for the same URL. This keeps the plan actionable — one task, not confusing duplicates.
-3. **Do NOT suggest article titles or content angles.** You don't have the cluster detail data (competitors, outlines, PAA). Recommend the action, format, and priority. The user will analyze the cluster in thruuu to decide the angle.
-4. **Do NOT claim to know AIO citation status.** You don't have this data. Say "check with thruuu's AIO Monitoring tool" — never "not yet cited" or "already cited."
-5. **Keep the Reasoning column to 1–2 short sentences.** Focus on WHY this priority and action. Good: "Core product topic, no existing page, PR=36 accessible." Bad: "Create dedicated article: Best SERP Competitor Ranking Tools — focus on..."
-6. **The "Pages Ranking for Multiple Topics" section must be simple.** Show which pages rank for many topics, which of those are a good fit, and which might need their own page. No jargon, no over-explanation.
-7. **The "Skipped Clusters" section is a simple table.** Topic + reason. One line each. No paragraphs.
+1. **Include Intent column.** Show informational / commercial / transactional for each cluster. This helps the user understand the type of content needed.
+2. **Rename "Avg PR" to "Competition" and describe it in plain language.** In the Reasoning column, say "low competition," "moderate competition," or "high competition" instead of just citing the PR number. Show the PR number in parentheses for reference: "Low (33)". Use these ranges relative to the domain's own PR:
+   - PR below the domain's PR → **Low**
+   - PR within 10 points above the domain's PR → **Moderate**
+   - PR more than 10 points above the domain's PR → **High**
+3. **Always show the actual Best URL from the export data.** Even if the URL is a mismatch and the action is "Create," show the URL that currently ranks. Only show "(none)" when the export truly has no Best URL.
+4. **Handle duplicate URLs across plan items.** When the same URL appears as Best URL for multiple clusters, don't list them as separate optimization tasks. Group them: list the primary cluster as the main item and note in the reasoning that it also covers clusters X, Y, Z.
+5. **Do NOT suggest article titles or content angles.** Recommend action, format, and priority. The user decides the angle after analyzing the cluster in thruuu.
+6. **Do NOT claim to know AIO citation status.** Say "check with thruuu's AIO Monitoring tool" — never "not yet cited" or "already cited."
+7. **Keep the Reasoning column to 1–2 short sentences.** Focus on WHY. Use plain language for competition level.
+
+**Rules for the "Pages Ranking for Multiple Topics" section:**
+
+1. **Use clear column names.** "Already ranking well" = these clusters are a good fit for this page, no action needed. "Needs dedicated content" = these clusters would perform better with their own page.
+2. **Add the description above the table** explaining what the columns mean so users don't need to guess.
+3. **Keep it simple.** No jargon, no over-explanation.
+
+**Rules for "Skipped Clusters":**
+
+1. Simple table. Topic + reason. One line each. No paragraphs.
 
 #### 3b. XLSX file → `/output/{project_name}_strategy.xlsx`
 
@@ -285,13 +313,13 @@ Selected topics (top N) with columns:
 - Action (Create / Optimize / No action)
 - Format (Article / Video / Forum / Tool — can be multiple)
 - Priority (P1 / P2 / P3 / Monitor)
+- Intent
+- Competition (Low / Moderate / High + PR number)
 - Reasoning (short — 1 sentence)
 - Notes (longer context if needed — separate from Reasoning for readability in cells)
 - Best URL (existing URL if any)
 - Avg Position
 - Aggregated Volume
-- Avg PR
-- Intent
 
 **Tab 2: Content Calendar**
 - Week number
@@ -301,9 +329,9 @@ Selected topics (top N) with columns:
 - Priority
 
 **Tab 3: AIO Monitoring**
-Clusters recommended for AIO brand mention tracking:
-- Topic
-- Keywords to monitor (full keyword list from the cluster — the user needs these to paste into thruuu)
+Clusters recommended for AIO brand mention tracking. **One keyword per row** so the user can easily copy and paste into thruuu:
+- Topic (repeated for each keyword row)
+- Keyword (one keyword per row, not comma-separated)
 - AIO Feature %
 - Intent
 - Rationale (short)
